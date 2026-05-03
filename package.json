@@ -1,0 +1,49 @@
+{
+  "name": "@deltarobotics/uhd",
+  "version": "0.1.0",
+  "description": "Universal Hardware Description — an open, composable description language for multidisciplinary hardware engineering. Module / Interface / Harness primitives.",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "src",
+    "docs",
+    "LICENSE",
+    "NOTICE",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "type-check": "tsc --noEmit"
+  },
+  "keywords": [
+    "hardware",
+    "hardware-description",
+    "uhd",
+    "electronics",
+    "mechanical",
+    "pneumatic",
+    "robotics",
+    "eda",
+    "schematic",
+    "interchange",
+    "open-standard"
+  ],
+  "author": "Delta Robotics, Inc.",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Delta-Robotics-Inc/uhd.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Delta-Robotics-Inc/uhd/issues"
+  },
+  "homepage": "https://github.com/Delta-Robotics-Inc/uhd#readme",
+  "devDependencies": {
+    "typescript": "^5.7.0",
+    "vitest": "^3.1.0"
+  }
+}
