@@ -8,13 +8,13 @@
   "files": [
     "dist",
     "src",
-    "docs",
+    "docs/**/*.md",
     "LICENSE",
     "NOTICE",
     "README.md"
   ],
   "scripts": {
-    "build": "tsc",
+    "build": "tsc -p tsconfig.build.json",
     "test": "vitest run",
     "test:watch": "vitest",
     "type-check": "tsc --noEmit"
@@ -43,6 +43,7 @@
   },
   "homepage": "https://github.com/Delta-Robotics-Inc/uhd#readme",
   "devDependencies": {
+    "@types/node": "^25.6.0",
     "typescript": "^5.7.0",
     "vitest": "^3.1.0"
   }
