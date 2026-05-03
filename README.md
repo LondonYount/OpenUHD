@@ -10,7 +10,7 @@
 
 ## What is UHD?
 
-**Universal Hardware Description (UHD)** is the first open data model designed to robustly and scalably interchange and augment arbitrary hardware systems — across electrical, mechanical, pneumatic, thermal, and any future domain.
+**Universal Hardware Description (UHD)** is an open data model designed to robustly and scalably interchange and augment arbitrary hardware systems — across electrical, mechanical, pneumatic, thermal, and any future domain. Designed to enable collaboration between both humans and agents.
 
 UHD is a **rich, common language for defining, packaging, assembling, and editing hardware designs**, and a foundation that tools, libraries, and applications can build on. Where each discipline today maintains its own incompatible representation — schematic capture for EE, CAD for ME, separate firmware-side data models — UHD provides one description that all of them share.
 
