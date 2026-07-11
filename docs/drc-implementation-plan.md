@@ -15,13 +15,17 @@ connectors, census.
 
 ---
 
-## Phase 0 — Export surface (prerequisite, ~small)
+> Status 2026-07-07: Phases 0–2 implemented (`src/drc/`, `test/phase6-drc.test.ts`).
+> Phase 2 ships protocol-tier discovery with region trees, unambiguous auto-connect,
+> sub-link resolution, census, and potentials. 3a+ are next.
+
+## Phase 0 — Export surface (prerequisite, ~small) ✅
 
 - Re-export `matching/*`, `binding/*`, `parameters/*`, `instance/*`, `visualize/*` from
   `src/index.ts`; add `exports` subpaths (`.`, `./drc`, `./library`) to `package.json`.
 - No behavior change. Unblocks web consumption without deep imports.
 
-## Phase 1 — Result model (`src/drc/types.ts`)
+## Phase 1 — Result model (`src/drc/types.ts`) ✅
 
 The serializable contract both the DRC and the view build against. Extends
 `drc-spec.md` §5–7 with what the design iterations added:
@@ -75,7 +79,7 @@ interface PairValidationResult {
 
 Deliverable: types + JSON-schema snapshot test (contract stability for the website).
 
-## Phase 2 — `validatePair()` orchestrator (`src/drc/validate-pair.ts`)
+## Phase 2 — `validatePair()` orchestrator (`src/drc/validate-pair.ts`) ✅ (protocol tier)
 
 ```ts
 validatePair(a: ModuleDef, b: ModuleDef, opts?: {
@@ -197,17 +201,33 @@ field for future migration.
 
 Critical path: 0 → 1 → 2 → 3a → 9. Phases 4–7 attach independently after 2.
 
-## Open design decisions (need a call before the affected phase)
+## Design decisions (resolved 2026-07-07)
 
-1. Recursive matching strategy: exhaustive+memo w/ depth cap vs. backtracking heuristic (Phase 3a).
-2. Both-sides-implicit inference: defer or build (Phase 3a). Recommendation: defer.
-3. Bridge transfer representation: static `output_range` v1 (Phase 5).
-4. Connector field placement + ecosystem registry shape (Phase 7).
-5. Capacity parameter conventions: canonical param ids (`current_draw`, `max_current`,
-   `voltage`) — needs a library-authoring decision (Phase 6, blocks library seed too).
-6. Auto-lock threshold (drc-spec §10): do protocol-tier matches auto-lock? Recommend:
-   auto-connect but never auto-lock; locks are always user actions.
-7. Potential-band ranking + top-k cutoff (Phase 2 census): UX tuning, defer to build.
+1. Recursive matching strategy: **exhaustive with memoization, depth cap 4** (Phase 3a).
+2. Both-sides-implicit inference: **deferred** — one-sided inference covers the demos;
+   census flags it as future.
+3. Bridge transfer representation: **static `output_range` param on the bridge trait**,
+   no transfer-function computation in v1 (Phase 5).
+4. Connector modeling: **connectors are separate entities** (`ModuleDef.connectors[]`
+   referencing interfaces/leaf signals), not an `InterfaceDef.connector` field — one
+   interface can be exposed on multiple connectors (pin + pad), and one connector can
+   carry multiple interfaces (QWIIC = i2c + power). Interface matching and connector
+   mating are orthogonal DRC checks. Ecosystem/gender/type live on the connector.
+   Phase 7 to be re-specced against this shape.
+5. Capacity/DRC rule conventions: **scoped rule packs**, not globally canonical param
+   ids. Rules are declarative instances of generic kinds (budget, count, address-space,
+   range-overlap, mate) declared at domain / protocol / interface scope and resolved
+   most-specific-wins. Canonical param ids (`current_draw`, `max_current`, …) are bound
+   *inside* each domain pack. Phase 6 becomes a generic aggregate-rule evaluator +
+   pack schema. Already reflected in `CapacityReport { ruleId, scope }`.
+6. Auto-lock: **never auto-lock** — locks are always user actions. Additionally,
+   auto-*connect* only unambiguous pairings (the sole viable candidate for both
+   endpoints, preferring parametrically clean ones); ambiguous matches (a GPIO a dozen
+   pins could serve) surface as potentials/◉ for the user to click. Implemented in
+   `validatePair` (`isUnambiguous`).
+7. Potential ranking: engine ranks by cleanliness → confidence → altitude and returns
+   all; the view applies top-k (default 3 dashed bands per side, rest behind an
+   expander). Final k is UX tuning at build time.
 
 ## Further exploration (not blocking)
 
