@@ -1,0 +1,4 @@
+# Default owner for everything in the repository.
+# Owners are auto-requested for review on matching pull requests.
+# The last matching pattern wins; add per-area owners below as the team grows.
+* @LondonYount

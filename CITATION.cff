@@ -1,0 +1,23 @@
+cff-version: 1.2.0
+message: "If you use UHD in academic or published work, please cite it as below."
+title: "Universal Hardware Description (UHD)"
+abstract: >-
+  An open, composable description language for multidisciplinary hardware
+  engineering, built on four primitives (Module, Interface, Harness, Artifact)
+  with protocol matching, capability-based composition, and tiered Design Rule
+  Checks.
+type: software
+authors:
+  - name: "Delta Robotics, Inc."
+    website: "https://deltaroboticsinc.com"
+version: 0.1.0
+date-released: 2026-05-02
+license: Apache-2.0
+repository-code: "https://github.com/Delta-Robotics-Inc/OpenUHD"
+url: "https://github.com/Delta-Robotics-Inc/OpenUHD"
+keywords:
+  - hardware description
+  - electronic design automation
+  - hardware interchange
+  - design rule check
+  - open standard

@@ -46,12 +46,12 @@
   "license": "Apache-2.0",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Delta-Robotics-Inc/uhd.git"
+    "url": "git+https://github.com/Delta-Robotics-Inc/OpenUHD.git"
   },
   "bugs": {
-    "url": "https://github.com/Delta-Robotics-Inc/uhd/issues"
+    "url": "https://github.com/Delta-Robotics-Inc/OpenUHD/issues"
   },
-  "homepage": "https://github.com/Delta-Robotics-Inc/uhd#readme",
+  "homepage": "https://github.com/Delta-Robotics-Inc/OpenUHD#readme",
   "devDependencies": {
     "@types/node": "^25.6.0",
     "typescript": "^5.7.0",
