@@ -1,0 +1,20 @@
+# Normalize line endings: store LF, check out native.
+* text=auto
+
+# Force LF on shell scripts, CRLF on Windows batch files.
+*.sh text eol=lf
+*.bat text eol=crlf
+
+# Treat binary assets as binary (no line-ending munging, no diff noise).
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.webp binary
+*.heic binary
+*.pdf binary
+*.pen binary
+
+# Keep test fixtures and tooling out of `git archive` tarballs.
+/test export-ignore
+/scripts export-ignore

@@ -1,0 +1,73 @@
+name: Feature request / schema change
+description: Propose a new feature, primitive, or change to the UHD data model
+title: "[feature] "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        UHD's data model is the load-bearing part of the project. Schema changes
+        need design conversation first - please open this issue before a PR.
+  - type: textarea
+    id: motivation
+    attributes:
+      label: Motivation
+      description: >
+        What problem are you solving? Cite a real use case - a domain
+        (electrical / mechanical / pneumatic / firmware), a class of components,
+        or a workflow UHD currently cannot express well.
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposal
+      description: >
+        Describe the change. If it touches the data model (Module, Interface,
+        Harness, Protocol, Capability, Parameter, Trait), sketch the type signatures.
+      render: typescript
+      placeholder: |
+        // proposed types or API
+    validations:
+      required: true
+  - type: textarea
+    id: example
+    attributes:
+      label: Example
+      description: How would a user write this? A small fixture or snippet showing the feature in use.
+      render: typescript
+      placeholder: |
+        // example usage
+    validations:
+      required: false
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      description: Other ways to solve this problem and why they fall short.
+    validations:
+      required: false
+  - type: dropdown
+    id: breaking
+    attributes:
+      label: Does this break existing UHD definitions?
+      options:
+        - "No"
+        - "Yes"
+        - "Not sure"
+    validations:
+      required: true
+  - type: textarea
+    id: migration
+    attributes:
+      label: Migration
+      description: If this is breaking, what does the migration look like?
+    validations:
+      required: false
+  - type: textarea
+    id: prior-art
+    attributes:
+      label: Prior art and context
+      description: Links to prior art (Verilog, USD, faebryk, atopile), related issues, or design notes.
+    validations:
+      required: false

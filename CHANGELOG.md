@@ -6,7 +6,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [Unreleased]
 
-## [0.1.0] — 2026-05-02
+### Added
+
+- Repository health and CI infrastructure: GitHub Actions CI (type-check, test, and build on Node 20/22/24, SHA-pinned actions), Dependabot config, `SECURITY.md`, `SUPPORT.md`, `CODEOWNERS`, `CITATION.cff`, `.editorconfig`, and `.gitattributes`.
+- YAML issue forms (bug report and feature/schema-change) with a template chooser, replacing the legacy Markdown templates.
+
+### Changed
+
+- Expanded the README with a CI badge, an architecture diagram, and a live ASCII visualizer sample.
+
+## [0.1.0] - 2026-05-02
 
 ### Added
 
